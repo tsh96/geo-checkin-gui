@@ -25,7 +25,6 @@ export default Vue.extend({
         this.center.lat = position.coords.latitude
         this.center.lng = position.coords.longitude
         this.accuracy = position.coords.accuracy
-        this.$q.notify(`${position.coords.latitude}, ${position.coords.longitude}, ${position.coords.accuracy}`)
       },
       err => { this.$q.notify(JSON.stringify(err)) },
       { enableHighAccuracy: true }
