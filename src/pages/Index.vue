@@ -16,11 +16,15 @@ import Vue from 'vue'
 export default Vue.extend({
   name: 'PageIndex',
   mounted () {
-    navigator.geolocation.watchPosition(position => {
-      this.center.lat = position.coords.latitude
-      this.center.lng = position.coords.longitude
-      this.$q.notify(JSON.stringify(this.center))
-    })
+    navigator.geolocation.watchPosition(
+      position => {
+        this.center.lat = position.coords.latitude
+        this.center.lng = position.coords.longitude
+        this.$q.notify(JSON.stringify(this.center))
+      },
+      err => { this.$q.notify(JSON.stringify(err)) },
+      { enableHighAccuracy: true }
+    )
   },
   data () {
     return {
