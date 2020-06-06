@@ -55,6 +55,7 @@ module.exports = configure(function (ctx) {
     build: {
       vueRouterMode: 'hash', // available values: 'hash', 'history'
       devtool: 'source-map',
+      distDir: 'docs',
       // Add dependencies for transpiling with Babel (Array of regexes)
       // (from node_modules, which are by default not transpiled).
       // Does not applies to modern builds.
