@@ -6,6 +6,10 @@
       style="width: 100vw; height: calc(100vh - 50px)"
     >
       <GmapMarker :position="center" />
+      <gmap-circle
+        :center="center"
+        :radius="accuracy"
+      />
     </gmap-map>
   </q-page>
 </template>
@@ -20,6 +24,7 @@ export default Vue.extend({
       position => {
         this.center.lat = position.coords.latitude
         this.center.lng = position.coords.longitude
+        this.accuracy = position.coords.accuracy
         this.$q.notify(`${position.coords.latitude}, ${position.coords.longitude}, ${position.coords.accuracy}`)
       },
       err => { this.$q.notify(JSON.stringify(err)) },
@@ -28,7 +33,8 @@ export default Vue.extend({
   },
   data () {
     return {
-      center: { lat: 10, lng: 10 }
+      center: { lat: 10, lng: 10 },
+      accuracy: 0
     }
   }
 })
