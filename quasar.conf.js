@@ -28,6 +28,7 @@ module.exports = configure(function (ctx) {
     // https://quasar.dev/quasar-cli/cli-documentation/boot-files
     boot: [
       'composition-api',
+      'google-maps',
       'axios'
     ],
 
