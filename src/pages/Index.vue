@@ -19,7 +19,7 @@ export default Vue.extend({
     navigator.geolocation.watchPosition(position => {
       this.center.lat = position.coords.latitude
       this.center.lng = position.coords.longitude
-      console.log(position)
+      this.$q.notify(JSON.stringify(this.center))
     })
   },
   data () {
