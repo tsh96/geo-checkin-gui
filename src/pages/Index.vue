@@ -1,6 +1,7 @@
 <template>
   <q-page class="row items-center justify-evenly">
     <gmap-map
+      :options="mapOptions"
       :center="center"
       :zoom="17"
       style="width: 100vw; height: calc(100vh - 50px)"
@@ -33,7 +34,16 @@ export default Vue.extend({
   data () {
     return {
       center: { lat: 10, lng: 10 },
-      accuracy: 0
+      accuracy: 0,
+      mapOptions: {
+        zoomControl: true,
+        mapTypeControl: false,
+        scaleControl: false,
+        streetViewControl: false,
+        rotateControl: false,
+        fullscreenControl: true,
+        disableDefaultUI: false
+      }
     }
   }
 })
