@@ -1,6 +1,11 @@
 import Axios from 'axios'
 
-const axios = Axios.create()
+const axios = Axios.create({
+  baseURL: 'http://localhost:8081/api',
+  withCredentials: true
+})
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 
 export type UpdateResult = {
   n: number;
@@ -25,7 +30,7 @@ export interface CheckInRecord extends Document {
     lng: number;
   };
   tenantID: string;
-  createdAt: Date;
+  createdAt: string;
   createdBy: string;
 }
 
@@ -73,7 +78,7 @@ export interface Position extends Document {
   lat: number;
   lng: number;
   tenantID: string;
-  createdAt: Date;
+  createdAt: string;
   createdBy: string;
 }
 
@@ -106,7 +111,7 @@ export interface User extends Document {
   email?: string;
   roles: string[];
   tenantID: string;
-  createdAt: Date;
+  createdAt: string;
   createdBy?: string;
 }
 
@@ -287,5 +292,5 @@ export function deleteUserByID (id: string) {
  * get /self-info
  */
 export function getSelfInfo () {
-  return axios.get('/self-info')
+  return axios.get<JwtUser>('/self-info')
 }
