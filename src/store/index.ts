@@ -1,5 +1,7 @@
 import { store } from 'quasar/wrappers'
 import Vuex from 'vuex'
+import selfInfo from './self-info'
+import { SelfInfoStateInterface } from './self-info/state'
 
 // import example from './module-example';
 // import { ExampleStateInterface } from './module-example/state';
@@ -13,7 +15,7 @@ export interface StoreInterface {
   // Define your own store structure, using submodules if needed
   // example: ExampleStateInterface;
   // Declared as unknown to avoid linting issue. Best to strongly type as per the line above.
-  example: unknown;
+  selfInfo: SelfInfoStateInterface;
 }
 
 export default store(function ({ Vue }) {
@@ -21,7 +23,7 @@ export default store(function ({ Vue }) {
 
   const Store = new Vuex.Store<StoreInterface>({
     modules: {
-      // example
+      selfInfo
     },
 
     // enable strict mode (adds overhead!)
